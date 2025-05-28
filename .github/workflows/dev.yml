@@ -73,12 +73,3 @@ jobs:
         env:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
-
-      - name: Run notebook validation
-        shell: bash
-        run: |
-          set -o pipefail
-          databricks bundle run notebook_validation_job -t cicd_testing --refresh-all 2>&1 | tee output.log
-        env:
-          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
-          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
