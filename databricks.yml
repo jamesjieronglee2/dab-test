@@ -18,6 +18,17 @@ targets:
     workspace:
       host: https://dbc-6f343e30-6d57.cloud.databricks.com
 
+  cicd_testing:
+    mode: production
+    workspace:
+      host: https://dbc-6f343e30-6d57.cloud.databricks.com
+      # We explicitly deploy to /Workspace/Users/jamesjieronglee@gmail.com to make sure we only have a single copy.
+      root_path: /Workspace/Users/jamesjieronglee@gmail.com/.bundle/${bundle.name}/${bundle.target}
+    permissions:
+      - user_name: jamesjieronglee@gmail.com
+        level: CAN_MANAGE
+
+
   prod:
     mode: production
     workspace:
