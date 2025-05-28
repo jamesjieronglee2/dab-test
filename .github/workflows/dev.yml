@@ -69,7 +69,7 @@ jobs:
       - uses: databricks/setup-cli@main
 
       - name: Deploy bundle
-        run: databricks bundle deploy --target staging
+        run: databricks bundle deploy --target cicd_testing
         env:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
@@ -78,7 +78,7 @@ jobs:
         shell: bash
         run: |
           set -o pipefail
-          databricks bundle run notebook_validation_job -t staging --refresh-all 2>&1 | tee output.log
+          databricks bundle run notebook_validation_job -t cicd_testing --refresh-all 2>&1 | tee output.log
         env:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
