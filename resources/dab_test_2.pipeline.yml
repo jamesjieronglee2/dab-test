@@ -1,0 +1,14 @@
+# The main pipeline for dab_test_2
+resources:
+  pipelines:
+    dab_test_2_pipeline:
+      name: dab_test_2_pipeline
+      serverless: true
+      catalog: workspace
+      schema: dab_test_2_${bundle.target}
+      libraries:
+        - notebook:
+            path: ../src/dlt_pipeline.ipynb
+
+      configuration:
+        bundle.sourcePath: ${workspace.file_path}/src
